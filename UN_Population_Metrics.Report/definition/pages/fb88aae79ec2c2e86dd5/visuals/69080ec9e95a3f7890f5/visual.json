@@ -47,6 +47,24 @@
             }
           ]
         },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_UN_Population_metrics"
+                    }
+                  },
+                  "Property": "EstimateMethod"
+                }
+              },
+              "queryRef": "Fact_UN_Population_metrics.EstimateMethod",
+              "nativeQueryRef": "EstimateMethod"
+            }
+          ]
+        },
         "Y": {
           "projections": [
             {
@@ -521,6 +539,20 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "9557054cfff581d37ce7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_metrics"
+              }
+            },
+            "Property": "EstimateMethod"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }
