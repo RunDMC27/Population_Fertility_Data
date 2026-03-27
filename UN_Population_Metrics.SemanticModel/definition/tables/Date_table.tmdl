@@ -1,0 +1,30 @@
+table Date_table
+	lineageTag: f3bb12c5-60b0-4f83-900e-cf5623b6eb6d
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: Short Date
+		lineageTag: 8c124887-3374-4d4a-a24f-59bf13786f1d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year = year(Date_table[Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: 7cb20c26-1526-406f-b857-111da9987c2b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date_table = calculated
+		mode: import
+		source = CALENDARAUTO()
+
+	annotation PBI_Id = f29c2e5c1f8c4de984808b528ed05745
+

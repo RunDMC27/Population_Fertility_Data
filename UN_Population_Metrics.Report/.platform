@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "UN_Population_Metrics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4f0ce619-98bd-4874-8ea1-85434ad656f3"
+  }
+}

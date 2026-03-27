@@ -1,0 +1,304 @@
+table DIM_UN_Indicators
+	excludeFromModelRefresh
+	lineageTag: ab4cf7d0-ffb2-49b5-aeb0-97bf35cd0037
+
+	column 'data.id'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e3b13a6-1c72-49fa-ae30-68d36f7e393e
+		summarizeBy: none
+		sourceColumn: data.id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.name'
+		dataType: string
+		lineageTag: 761e9cab-ab14-4e27-8de2-784070f2b9ee
+		summarizeBy: none
+		sourceColumn: data.name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.shortName'
+		dataType: string
+		lineageTag: 503f5c65-8d23-4b63-bfef-3a0e35a4a301
+		summarizeBy: none
+		sourceColumn: data.shortName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.description'
+		dataType: string
+		lineageTag: eaf890ef-dd45-4f17-9df7-a6d2a42059af
+		summarizeBy: none
+		sourceColumn: data.description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.displayName'
+		dataType: string
+		lineageTag: 2555974f-deae-4ba4-8916-97bfaf6b2cf8
+		summarizeBy: none
+		sourceColumn: data.displayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.dimAge'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e2651098-50ca-4333-8f9c-147df0be8a01
+		summarizeBy: none
+		sourceColumn: data.dimAge
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.dimSex'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b3d3ee8d-c105-4cac-96a9-c98885e95f2e
+		summarizeBy: none
+		sourceColumn: data.dimSex
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.dimVariant'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4cdf3964-df49-4bba-a8f9-122d4c2ce7b5
+		summarizeBy: none
+		sourceColumn: data.dimVariant
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.dimCategory'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 71d27752-e0a5-4c31-b257-1528fa5dccc0
+		summarizeBy: none
+		sourceColumn: data.dimCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.defaultAgeId'
+		dataType: int64
+		formatString: 0
+		lineageTag: fe4d6a64-00ee-4609-b92a-6a6ccb7713cb
+		summarizeBy: count
+		sourceColumn: data.defaultAgeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.defaultSexId'
+		dataType: int64
+		formatString: 0
+		lineageTag: a9c8447d-2d8e-4ae6-b386-5edbec4b8d78
+		summarizeBy: count
+		sourceColumn: data.defaultSexId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.defaultVariantId'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1976d744-2f01-42df-b049-6890672a0aeb
+		summarizeBy: count
+		sourceColumn: data.defaultVariantId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.defaultCategoryId'
+		dataType: int64
+		formatString: 0
+		lineageTag: eaeb91d9-0e75-495b-95de-b6c5a4f8ac51
+		summarizeBy: count
+		sourceColumn: data.defaultCategoryId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.variableType'
+		dataType: string
+		lineageTag: 354c19e8-981b-48a0-aad4-a45cac1c9043
+		summarizeBy: none
+		sourceColumn: data.variableType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.valueType'
+		dataType: string
+		lineageTag: 7a46420a-1839-48bb-bd23-c44bc98234ca
+		summarizeBy: none
+		sourceColumn: data.valueType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.unitScaling'
+		dataType: double
+		lineageTag: ae0b1f95-2a75-4e53-b671-59fdf5b29775
+		summarizeBy: sum
+		sourceColumn: data.unitScaling
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'data.precision'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5047bcfa-4a5e-425a-99c5-bcedc342be80
+		summarizeBy: sum
+		sourceColumn: data.precision
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.isThousandSeparatorSpace'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 310b1591-e936-4982-a9ce-9b80a41c9067
+		summarizeBy: none
+		sourceColumn: data.isThousandSeparatorSpace
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.formatString'
+		dataType: string
+		lineageTag: 51f20afa-35fc-44b2-9817-044c04dc5737
+		summarizeBy: none
+		sourceColumn: data.formatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.unitShortLabel'
+		dataType: string
+		lineageTag: e5bf904c-2cf9-4837-8859-5a0255f05a47
+		summarizeBy: none
+		sourceColumn: data.unitShortLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.unitLongLabel'
+		dataType: string
+		lineageTag: 1b0d8b98-16fc-4359-b771-4cc1f15c8033
+		summarizeBy: none
+		sourceColumn: data.unitLongLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.nClassesDefault'
+		dataType: int64
+		formatString: 0
+		lineageTag: 990773bd-2dc1-49a7-ba6f-56fcbc3b1c4c
+		summarizeBy: sum
+		sourceColumn: data.nClassesDefault
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.downloadFileName'
+		dataType: string
+		lineageTag: 0a291e90-6b2c-40d0-81ac-aaec4846456e
+		summarizeBy: none
+		sourceColumn: data.downloadFileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.sourceId'
+		dataType: int64
+		formatString: 0
+		lineageTag: 85513f8b-7410-49ca-a897-8828750c84f4
+		summarizeBy: count
+		sourceColumn: data.sourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.sourceName'
+		dataType: string
+		lineageTag: d4ef9fc3-205e-4dc8-9372-856a121b2e3a
+		summarizeBy: none
+		sourceColumn: data.sourceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.sourceYear'
+		dataType: int64
+		formatString: 0
+		lineageTag: 164809bc-0e0c-4bee-a3d8-b8c4ae34274d
+		summarizeBy: sum
+		sourceColumn: data.sourceYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.sourceStartYear'
+		dataType: int64
+		formatString: 0
+		lineageTag: 395972be-d5b7-4023-b929-559e114dd9f9
+		summarizeBy: sum
+		sourceColumn: data.sourceStartYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.sourceEndYear'
+		dataType: int64
+		formatString: 0
+		lineageTag: 46b52939-47c5-4cf6-8298-82fd462bef75
+		summarizeBy: sum
+		sourceColumn: data.sourceEndYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.sourceCitation'
+		dataType: string
+		lineageTag: 317f7a40-9d63-40ed-83ec-9dbf107a13dd
+		summarizeBy: none
+		sourceColumn: data.sourceCitation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.sourceUrl'
+		dataType: string
+		lineageTag: 952eb473-92e0-4dee-bc52-0820ef7d0dc9
+		summarizeBy: none
+		sourceColumn: data.sourceUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.topicId'
+		dataType: int64
+		formatString: 0
+		lineageTag: 788ac4b5-5f76-4cce-8bdc-ebe492473dc6
+		summarizeBy: count
+		sourceColumn: data.topicId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.topicName'
+		dataType: string
+		lineageTag: 7a1c44d6-b00e-4154-a155-9b405556a11c
+		summarizeBy: none
+		sourceColumn: data.topicName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.topicShortName'
+		dataType: string
+		lineageTag: ca4eef2d-4d91-4d2a-8bd8-9f63e76b4d7d
+		summarizeBy: none
+		sourceColumn: data.topicShortName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_UN_Indicators = m
+		mode: import
+		source =
+				let
+				    Source = Json.Document(Web.Contents("https://population.un.org/dataportalapi/api/v1/indicators")),
+				    #"Converted to Table" = Table.FromRecords({Source}),
+				    #"Expanded data" = Table.ExpandListColumn(#"Converted to Table", "data"),
+				    #"Expanded data1" = Table.ExpandRecordColumn(#"Expanded data", "data", {"id", "name", "shortName", "description", "displayName", "dimAge", "dimSex", "dimVariant", "dimCategory", "defaultAgeId", "defaultSexId", "defaultVariantId", "defaultCategoryId", "variableType", "valueType", "unitScaling", "precision", "isThousandSeparatorSpace", "formatString", "unitShortLabel", "unitLongLabel", "nClassesDefault", "downloadFileName", "sourceId", "sourceName", "sourceYear", "sourceStartYear", "sourceEndYear", "sourceCitation", "sourceUrl", "topicId", "topicName", "topicShortName"}, {"data.id", "data.name", "data.shortName", "data.description", "data.displayName", "data.dimAge", "data.dimSex", "data.dimVariant", "data.dimCategory", "data.defaultAgeId", "data.defaultSexId", "data.defaultVariantId", "data.defaultCategoryId", "data.variableType", "data.valueType", "data.unitScaling", "data.precision", "data.isThousandSeparatorSpace", "data.formatString", "data.unitShortLabel", "data.unitLongLabel", "data.nClassesDefault", "data.downloadFileName", "data.sourceId", "data.sourceName", "data.sourceYear", "data.sourceStartYear", "data.sourceEndYear", "data.sourceCitation", "data.sourceUrl", "data.topicId", "data.topicName", "data.topicShortName"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded data1",{{"pageNumber", Int64.Type}, {"pageSize", Int64.Type}, {"previousPage", type any}, {"nextPage", type any}, {"pages", Int64.Type}, {"total", Int64.Type}, {"data.id", Int64.Type}, {"data.name", type text}, {"data.shortName", type text}, {"data.description", type text}, {"data.displayName", type text}, {"data.dimAge", type logical}, {"data.dimSex", type logical}, {"data.dimVariant", type logical}, {"data.dimCategory", type logical}, {"data.defaultAgeId", Int64.Type}, {"data.defaultSexId", Int64.Type}, {"data.defaultVariantId", Int64.Type}, {"data.defaultCategoryId", Int64.Type}, {"data.variableType", type text}, {"data.valueType", type text}, {"data.unitScaling", type number}, {"data.precision", Int64.Type}, {"data.isThousandSeparatorSpace", type logical}, {"data.formatString", type text}, {"data.unitShortLabel", type text}, {"data.unitLongLabel", type text}, {"data.nClassesDefault", Int64.Type}, {"data.downloadFileName", type text}, {"data.sourceId", Int64.Type}, {"data.sourceName", type text}, {"data.sourceYear", Int64.Type}, {"data.sourceStartYear", Int64.Type}, {"data.sourceEndYear", Int64.Type}, {"data.sourceCitation", type text}, {"data.sourceUrl", type text}, {"data.topicId", Int64.Type}, {"data.topicName", type text}, {"data.topicShortName", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"data.id", "data.name", "data.shortName", "data.description", "data.displayName", "data.dimAge", "data.dimSex", "data.dimVariant", "data.dimCategory", "data.defaultAgeId", "data.defaultSexId", "data.defaultVariantId", "data.defaultCategoryId", "data.variableType", "data.valueType", "data.unitScaling", "data.precision", "data.isThousandSeparatorSpace", "data.formatString", "data.unitShortLabel", "data.unitLongLabel", "data.nClassesDefault", "data.downloadFileName", "data.sourceId", "data.sourceName", "data.sourceYear", "data.sourceStartYear", "data.sourceEndYear", "data.sourceCitation", "data.sourceUrl", "data.topicId", "data.topicName", "data.topicShortName"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

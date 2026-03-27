@@ -1,0 +1,15 @@
+relationship 1bcd9c31-d7b6-5ba2-bb38-2415cfd48e54
+	fromColumn: Fact_UN_Population_metrics.EOYear
+	toColumn: Date_table.Date
+
+relationship 5ce4a821-06a3-a999-10ae-14dfb2491e74
+	crossFilteringBehavior: bothDirections
+	fromColumn: Fact_UN_Population_metrics.LocationId
+	toColumn: DIM_UN_Countrydata.'data.Id'
+
+relationship 13de4f4d-256f-bcca-1651-365854b75a78
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Fact_UN_Population_Indicators.IndicatorId
+	toColumn: DIM_UN_Indicators.'data.id'
+

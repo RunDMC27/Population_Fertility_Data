@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DIM_UN_Countrydata","DIM_UN_Indicators","DIM_Fact_UN_LifeExpectancy","Fact_UN_Population_metrics","Fact_UN_Population_Indicators"]
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
+
+ref table Date_table
+ref table DIM_UN_Countrydata
+ref table DIM_UN_Indicators
+ref table Fact_UN_Population_metrics
+ref table Fact_UN_Population_Indicators
+
+ref cultureInfo en-US
+

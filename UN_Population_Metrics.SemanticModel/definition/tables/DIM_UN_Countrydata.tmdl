@@ -1,0 +1,118 @@
+table DIM_UN_Countrydata
+	lineageTag: 7437c1fc-d584-486a-856f-f88812a6583f
+
+	column 'data.Id'
+		dataType: int64
+		formatString: 0
+		lineageTag: 163c18d9-0303-4c58-aec7-b8a85321b34c
+		summarizeBy: none
+		sourceColumn: data.Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.Name'
+		dataType: string
+		lineageTag: 90fdef3f-9c2d-48d1-8244-23ba0193c58d
+		summarizeBy: none
+		sourceColumn: data.Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.Iso2'
+		dataType: string
+		lineageTag: d22c7115-9060-4e94-8e62-366a28664fd7
+		summarizeBy: none
+		sourceColumn: data.Iso2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.Iso3'
+		dataType: string
+		lineageTag: 3f687866-0dce-4d2c-af12-e24fc604f125
+		summarizeBy: none
+		sourceColumn: data.Iso3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.Longitude'
+		dataType: double
+		lineageTag: 6fcb08e2-1210-48fd-bbee-ba21bf67ce50
+		summarizeBy: none
+		sourceColumn: data.Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'data.Latitude'
+		dataType: double
+		lineageTag: dbfa409a-47da-4655-ab14-bf16f75e0b32
+		summarizeBy: none
+		sourceColumn: data.Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'data.Region'
+		dataType: string
+		lineageTag: 57fbab79-66b9-44bd-93d7-852389332575
+		summarizeBy: none
+		sourceColumn: data.Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.SubRegion'
+		dataType: string
+		lineageTag: 2e727b0a-e2b5-4d33-8e1b-48f3b340307c
+		summarizeBy: none
+		sourceColumn: data.SubRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.WorldBankIncomeGroup'
+		dataType: string
+		lineageTag: 0de43a1d-c60b-4915-837d-6f4ac8d6ef94
+		summarizeBy: none
+		sourceColumn: data.WorldBankIncomeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.UNDevelopmentGroup'
+		dataType: string
+		lineageTag: c92ef9a3-6192-45aa-99c9-80e4642c131e
+		summarizeBy: none
+		sourceColumn: data.UNDevelopmentGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'data.SDGRegion'
+		dataType: string
+		lineageTag: d9f8ce4f-9b2c-46b4-9cdc-31e627d5046f
+		summarizeBy: none
+		sourceColumn: data.SDGRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_UN_Countrydata = m
+		mode: import
+		source =
+				let
+				    Source = Json.Document(Web.Contents("https://population.un.org/dataportalapi/api/v1/locationsWithAggregates?pageSize=1000")),
+				    #"Converted to Table" = Table.FromRecords({Source}),
+				    #"Expanded data" = Table.ExpandListColumn(#"Converted to Table", "data"),
+				    #"Expanded data1" = Table.ExpandRecordColumn(#"Expanded data", "data", {"Id", "Name", "Iso2", "Iso3", "Longitude", "Latitude", "Region", "SubRegion", "WorldBankIncomeGroup", "UNDevelopmentGroup", "SDGRegion", "PopPeak"}, {"data.Id", "data.Name", "data.Iso2", "data.Iso3", "data.Longitude", "data.Latitude", "data.Region", "data.SubRegion", "data.WorldBankIncomeGroup", "data.UNDevelopmentGroup", "data.SDGRegion", "data.PopPeak"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded data1",{{"pageNumber", Int64.Type}, {"pageSize", Int64.Type}, {"previousPage", type any}, {"nextPage", type any}, {"pages", Int64.Type}, {"total", Int64.Type}, {"data.Id", Int64.Type}, {"data.Name", type text}, {"data.Iso2", type text}, {"data.Iso3", type text}, {"data.Longitude", type number}, {"data.Latitude", type number}, {"data.Region", type text}, {"data.SubRegion", type text}, {"data.WorldBankIncomeGroup", type text}, {"data.UNDevelopmentGroup", type text}, {"data.SDGRegion", type text}, {"data.PopPeak", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"data.Id", "data.Name", "data.Iso2", "data.Iso3", "data.Longitude", "data.Latitude", "data.Region", "data.SubRegion", "data.WorldBankIncomeGroup", "data.UNDevelopmentGroup", "data.SDGRegion"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each true),
+				    #"Sorted Rows" = Table.Sort(#"Filtered Rows",{{"data.Name", Order.Ascending}, {"data.Id", Order.Ascending}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Sorted Rows", each true),
+				    #"Sorted Rows1" = Table.Sort(#"Filtered Rows1",{{"data.Id", Order.Ascending}}),
+				    #"Filtered Rows2" = Table.SelectRows(#"Sorted Rows1", each true)
+				in
+				    #"Filtered Rows2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
