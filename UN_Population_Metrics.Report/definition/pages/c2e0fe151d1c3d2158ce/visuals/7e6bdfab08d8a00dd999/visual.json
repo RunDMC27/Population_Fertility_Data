@@ -1,0 +1,101 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "7e6bdfab08d8a00dd999",
+  "position": {
+    "x": 1067.1627906976744,
+    "y": 26.790697674418606,
+    "z": 5000,
+    "height": 38.697674418604649,
+    "width": 193.48837209302326,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "PBI_CV_16948668_E17D_454B_8664_2F2C470EA8C1",
+    "query": {
+      "queryState": {
+        "category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_UN_Population_Pyramid"
+                    }
+                  },
+                  "Property": "TimeLabel"
+                }
+              },
+              "queryRef": "Fact_UN_Population_Pyramid.TimeLabel",
+              "nativeQueryRef": "TimeLabel",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "captionSettings": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "transitionSettings": [
+        {
+          "properties": {
+            "autoStart": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "loop": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

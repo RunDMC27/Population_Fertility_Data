@@ -315,7 +315,7 @@ table Fact_UN_Population_metrics
 		source =
 				let
 				    Url =
-				        "https://population.un.org/dataportalapi/api/v1/data/indicators/49,19,70,85/locations/208,156,826,356,923,924,925,926,931,947,905/start/1990/end/2050" &
+				        "https://population.un.org/dataportalapi/api/v1/data/indicators/49,19,70,85/locations/156,356,947,1829/start/1970/end/2050" &
 				        "?format=csv",
 				
 				    Source =

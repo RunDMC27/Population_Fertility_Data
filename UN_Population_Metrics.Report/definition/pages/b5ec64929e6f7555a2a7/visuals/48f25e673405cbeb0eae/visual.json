@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "f19550b45c0fc584016b",
+  "name": "48f25e673405cbeb0eae",
   "position": {
-    "x": 12.032902467685076,
-    "y": 9.0246768507638073,
+    "x": 11.756601607347877,
+    "y": 8.817451205510908,
     "z": 10000,
-    "height": 72.197414806110459,
-    "width": 278.26086956521743,
+    "height": 72.009184845005748,
+    "width": 235.13203214695753,
     "tabOrder": 14002
   },
   "visual": {
@@ -67,49 +67,7 @@
       ],
       "general": [
         {
-          "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "f",
-                    "Entity": "Fact_UN_Population_metrics",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "f"
-                                }
-                              },
-                              "Property": "Location"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'China'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
+          "properties": {}
         }
       ],
       "selection": [
@@ -125,7 +83,7 @@
             "strictSingleSelect": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }

@@ -3,10 +3,10 @@
   "name": "a86a48c34fd59fb82fec",
   "position": {
     "x": 0,
-    "y": 73.142857142857139,
+    "y": 80.963855421686745,
     "z": 0,
-    "height": 192.83116883116884,
-    "width": 640,
+    "height": 188.91566265060243,
+    "width": 622.00803212851406,
     "tabOrder": 9000
   },
   "visual": {
@@ -527,93 +527,5 @@
         }
       ]
     }
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6404292b47f4eacb9706",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_UN_Population_metrics"
-              }
-            },
-            "Property": "Population Latest"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c99350e2256008eca37b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_UN_Population_metrics"
-              }
-            },
-            "Property": "Fertility Rate Latest"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "01661f3158668e5e7cb2",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_UN_Population_metrics"
-              }
-            },
-            "Property": "PSR (20-64/65+) Latest"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8370e4b8f89202b456a6",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_UN_Population_metrics"
-              }
-            },
-            "Property": "PSR (20-64/65+) Projection"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "6ece973050c6de3989dc",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_UN_Population_metrics"
-              }
-            },
-            "Property": "Population Projection"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "4e74a339ae0a2b712308",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_UN_Population_metrics"
-              }
-            },
-            "Property": "Fertility Rate Projection"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

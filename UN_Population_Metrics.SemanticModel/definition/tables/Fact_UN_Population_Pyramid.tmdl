@@ -1,0 +1,132 @@
+table Fact_UN_Population_Pyramid
+	lineageTag: 22b9b261-7c4d-4aa2-a178-77fe8794aa75
+
+	measure Male = calculate(sum(Fact_UN_Population_Pyramid[Value]),filter(Fact_UN_Population_Pyramid,Fact_UN_Population_Pyramid[Sex] = "Male"))
+		lineageTag: f5e82e09-5329-4c36-86a3-b9a3758b8e44
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Female = calculate(sum(Fact_UN_Population_Pyramid[Value])* -1, filter(Fact_UN_Population_Pyramid,Fact_UN_Population_Pyramid[Sex] = "Female"))
+		lineageTag: 1d54fcd5-f3e4-481f-8be9-d79822102aef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Title Pyramid'
+		lineageTag: 23055be8-2e96-40c9-a4f4-423c6abb7481
+
+	column LocationId
+		dataType: int64
+		formatString: 0
+		lineageTag: 24d3262b-b2ce-4264-ba00-c968c4872763
+		summarizeBy: count
+		sourceColumn: LocationId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 4582ec1c-bf79-4bd9-b861-a7978987ec53
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Indicator
+		dataType: string
+		lineageTag: b68ed48e-711e-4f36-8f56-530fb42c1dd8
+		summarizeBy: none
+		sourceColumn: Indicator
+
+		annotation SummarizationSetBy = Automatic
+
+	column VariantLabel
+		dataType: string
+		lineageTag: 931e0f01-00d6-4808-85bf-bbdc2f3e4d8a
+		summarizeBy: none
+		sourceColumn: VariantLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimeLabel
+		dataType: int64
+		formatString: 0
+		lineageTag: 5504da29-0c8b-4fb0-bf0b-785047f03c2d
+		summarizeBy: sum
+		sourceColumn: TimeLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimateMethod
+		dataType: string
+		lineageTag: 6f97aaff-739e-4ba3-803c-aa79861df537
+		summarizeBy: none
+		sourceColumn: EstimateMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sex
+		dataType: string
+		lineageTag: 730bca83-4b0e-41b1-8721-7c5a008675a1
+		summarizeBy: none
+		sourceColumn: Sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeLabel
+		dataType: string
+		lineageTag: 28c7c897-8980-4b42-88fc-3973a033f424
+		summarizeBy: none
+		sourceColumn: AgeLabel
+		sortByColumn: AgeLower
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: 8c71833b-f876-48a8-abf9-e6b04ec24ecc
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AgeLower
+		dataType: int64
+		formatString: 0
+		lineageTag: 2489b0c7-1660-489c-8c92-6a7a9d12c172
+		summarizeBy: sum
+		sourceColumn: AgeLower
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_UN_Population_Pyramid = m
+		mode: import
+		source =
+				let
+				    Url =
+				        "https://population.un.org/dataportalapi/api/v1/data/indicators/46/locations/156,356,947,1829/start/1970/end/2050" &
+				        "?format=csv",
+				
+				    Source =
+				        Csv.Document(Web.Contents(Url, [Timeout=#duration(0, 0, 5, 0), Headers=[Authorization="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtY2ZhbGwuZGF2aWQyN0Bob3RtYWlsLmNvbSIsImVtYWlsIjoibWNmYWxsLmRhdmlkMjdAaG90bWFpbC5jb20iLCJ1bmlxdWVfbmFtZSI6Im1jZmFsbC5kYXZpZDI3QGhvdG1haWwuY29tIiwibmJmIjoxNzcwMzkzOTk5LCJleHAiOjE4MDE5Mjk5OTksImlhdCI6MTc3MDM5Mzk5OSwiaXNzIjoiZG90bmV0LXVzZXItand0cyIsImF1ZCI6ImRhdGEtcG9ydGFsLWFwaSJ9.kF1H5muq9k3yQ0vkYJxirkaJPTFSBXZPIAltpEA6ZcA", Accept="text/csv"]]),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Removed Top Rows" = Table.Skip(Source,1),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Removed Top Rows", "Column1", Splitter.SplitTextByDelimiter("|", QuoteStyle.Csv), {"Column1.1", "Column1.2", "Column1.3", "Column1.4", "Column1.5", "Column1.6", "Column1.7", "Column1.8", "Column1.9", "Column1.10", "Column1.11", "Column1.12", "Column1.13", "Column1.14", "Column1.15", "Column1.16", "Column1.17", "Column1.18", "Column1.19", "Column1.20", "Column1.21", "Column1.22", "Column1.23", "Column1.24", "Column1.25", "Column1.26", "Column1.27", "Column1.28", "Column1.29", "Column1.30", "Column1.31", "Column1.32"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Column1.1", type text}, {"Column1.2", type text}, {"Column1.3", type text}, {"Column1.4", type text}, {"Column1.5", type text}, {"Column1.6", type text}, {"Column1.7", type text}, {"Column1.8", type text}, {"Column1.9", type text}, {"Column1.10", type text}, {"Column1.11", type text}, {"Column1.12", type text}, {"Column1.13", type text}, {"Column1.14", type text}, {"Column1.15", type text}, {"Column1.16", type text}, {"Column1.17", type text}, {"Column1.18", type text}, {"Column1.19", type text}, {"Column1.20", type text}, {"Column1.21", type text}, {"Column1.22", type text}, {"Column1.23", type text}, {"Column1.24", type text}, {"Column1.25", type text}, {"Column1.26", type text}, {"Column1.27", type text}, {"Column1.28", type text}, {"Column1.29", type text}, {"Column1.30", type text}, {"Column1.31", type text}, {"Column1.32", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"LocationId", Int64.Type}, {"Location", type text}, {"Iso3", type text}, {"Iso2", type text}, {"LocationTypeId", Int64.Type}, {"IndicatorId", Int64.Type}, {"Indicator", type text}, {"IndicatorDisplayName", type text}, {"SourceId", Int64.Type}, {"Source", type text}, {"Revision", Int64.Type}, {"VariantId", Int64.Type}, {"Variant", type text}, {"VariantShortName", type text}, {"VariantLabel", type text}, {"TimeId", Int64.Type}, {"TimeLabel", Int64.Type}, {"TimeMid", type number}, {"CategoryId", Int64.Type}, {"Category", type text}, {"EstimateTypeId", Int64.Type}, {"EstimateType", type text}, {"EstimateMethodId", Int64.Type}, {"EstimateMethod", type text}, {"SexId", Int64.Type}, {"Sex", type text}, {"AgeId", Int64.Type}, {"AgeLabel", type text}, {"AgeStart", Int64.Type}, {"AgeEnd", Int64.Type}, {"AgeMid", Int64.Type}, {"Value", type number}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type1",{"LocationId", "Location", "Indicator", "VariantLabel", "TimeLabel", "EstimateMethod", "Sex", "AgeLabel", "Value"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each ([Sex] <> "Both sexes") and ([VariantLabel] = "Median") and ([TimeLabel] = 1970 or [TimeLabel] = 1990 or [TimeLabel] = 2010 or [TimeLabel] = 2030 or [TimeLabel] = 2050)),
+				    #"Inserted Text Before Delimiter" = Table.AddColumn(#"Filtered Rows", "Text Before Delimiter", each Text.BeforeDelimiter([AgeLabel], "-"), type text),
+				    #"Replaced Value" = Table.ReplaceValue(#"Inserted Text Before Delimiter","+","",Replacer.ReplaceText,{"Text Before Delimiter"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Replaced Value",{{"Text Before Delimiter", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"Text Before Delimiter", "AgeLower"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
