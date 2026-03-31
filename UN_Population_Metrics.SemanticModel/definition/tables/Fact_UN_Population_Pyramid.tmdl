@@ -2,17 +2,46 @@ table Fact_UN_Population_Pyramid
 	lineageTag: 22b9b261-7c4d-4aa2-a178-77fe8794aa75
 
 	measure Male = calculate(sum(Fact_UN_Population_Pyramid[Value]),filter(Fact_UN_Population_Pyramid,Fact_UN_Population_Pyramid[Sex] = "Male"))
+		displayFolder: Pyramid Measures
 		lineageTag: f5e82e09-5329-4c36-86a3-b9a3758b8e44
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Female = calculate(sum(Fact_UN_Population_Pyramid[Value])* -1, filter(Fact_UN_Population_Pyramid,Fact_UN_Population_Pyramid[Sex] = "Female"))
+		displayFolder: Pyramid Measures
 		lineageTag: 1d54fcd5-f3e4-481f-8be9-d79822102aef
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Title Pyramid'
+		displayFolder: Pyramid Measures
 		lineageTag: 23055be8-2e96-40c9-a4f4-423c6abb7481
+
+	measure 'Female actual Sum' = calculate(sum(Fact_UN_Population_Pyramid[Value]), filter(Fact_UN_Population_Pyramid,Fact_UN_Population_Pyramid[Sex] = "Female"))
+		displayFolder: Pyramid Measures
+		lineageTag: d18c949e-f64f-4f91-891b-85580713abfc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Male Pop %' =
+			
+			VAR TotalPop = [Female actual Sum] + [Male]
+			Return
+			[Male] / TotalPop
+		displayFolder: Pyramid Measures
+		lineageTag: d839b171-d96a-48ed-b015-c3b61350b99e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Female Pop %' =
+			
+			VAR TotalPop = [Female actual Sum] + [Male]
+			Return
+			[Female actual Sum] / TotalPop
+		displayFolder: Pyramid Measures
+		lineageTag: 0d07f944-4147-40b8-8ee0-18b67922fed9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column LocationId
 		dataType: int64

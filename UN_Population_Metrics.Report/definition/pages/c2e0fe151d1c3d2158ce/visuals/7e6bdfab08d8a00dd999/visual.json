@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "7e6bdfab08d8a00dd999",
   "position": {
-    "x": 1067.1627906976744,
-    "y": 26.790697674418606,
+    "x": 1052.7102803738319,
+    "y": 26.915887850467293,
     "z": 5000,
-    "height": 38.697674418604649,
-    "width": 193.48837209302326,
+    "height": 38.8785046728972,
+    "width": 192.89719626168227,
     "tabOrder": 5000
   },
   "visual": {
@@ -54,14 +54,14 @@
             "autoStart": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
             "loop": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -97,5 +97,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b51e7c466f6023b9d22c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_Pyramid"
+              }
+            },
+            "Property": "TimeLabel"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

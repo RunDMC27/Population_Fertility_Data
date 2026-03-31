@@ -7,31 +7,37 @@ table Fact_UN_Population_metrics
 			    CALCULATE([Fertility Rate M/F], PARALLELPERIOD('Date_table'[Date], -12, MONTH))
 			RETURN
 			    ([Fertility Rate M/F] - FerPriorYear )
+		displayFolder: Measures
 		lineageTag: aa4ba810-34b2-42d1-8aad-f7c745e9d38f
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Population M/F' = calculate(sum(Fact_UN_Population_metrics[Total population by sex]),Fact_UN_Population_metrics[Sex]="Both sexes")
+		displayFolder: Measures
 		lineageTag: 7b10f16d-945d-4f38-9248-0e8fa568cc06
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Population M/F Ages' = calculate(sum(Fact_UN_Population_metrics[Population by age and sex - broad age groups]),Fact_UN_Population_metrics[Sex]="Both sexes")
+		displayFolder: Measures
 		lineageTag: c7525e04-de3a-4d00-a8a3-fb07eedd4750
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Fertility Rate M/F' = calculate(sum(Fact_UN_Population_metrics[Total fertility rate]),Fact_UN_Population_metrics[Sex]="Both sexes")
+		displayFolder: Measures
 		lineageTag: 55cdc8fe-4f01-4fee-98e9-38a277dc3377
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Potential Support Ratio M/F' = calculate(sum(Fact_UN_Population_metrics[Potential support ratio]),Fact_UN_Population_metrics[Sex]="Both sexes")
+		displayFolder: Measures
 		lineageTag: 717e447b-9594-456d-b7ef-a15f8133fdcb
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Trend = IF([Fertility rate VAR_parallelperiod] > 0. UNICHAR(9650), UNICHAR(128315))
+		displayFolder: Measures
 		lineageTag: b80fde65-90ac-45fa-aebd-ad3bfe26533e
 
 	measure 'Population Latest' =
@@ -52,6 +58,7 @@ table Fact_UN_Population_metrics
 			    Fact_UN_Population_metrics[EstimateMethod] = "Interpolation",
 			    Fact_UN_Population_metrics[Sex] = "Both sexes",
 			    Fact_UN_Population_metrics[EOYear] = LatestYear)
+		displayFolder: Measures
 		lineageTag: 5e5b1417-c3a1-4576-aee5-71d75a24b75f
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -74,6 +81,7 @@ table Fact_UN_Population_metrics
 			    Fact_UN_Population_metrics[EstimateMethod] = "Interpolation",
 			    Fact_UN_Population_metrics[Sex] = "Both sexes",
 			    Fact_UN_Population_metrics[EOYear] = LatestYear)
+		displayFolder: Measures
 		lineageTag: 86fd427c-eefa-42a4-abd0-694eb3015a24
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -98,6 +106,7 @@ table Fact_UN_Population_metrics
 			    Fact_UN_Population_metrics[AgeLabel] = "[20-64/65+]",
 			    Fact_UN_Population_metrics[Sex] = "Both sexes",
 			    Fact_UN_Population_metrics[EOYear] = LatestYear)
+		displayFolder: Measures
 		lineageTag: b6a8eb3a-acc3-480f-aa1e-7384a9b45713
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -122,11 +131,13 @@ table Fact_UN_Population_metrics
 			    Fact_UN_Population_metrics[AgeLabel] = "[20-69/70+]",
 			    Fact_UN_Population_metrics[Sex] = "Both sexes",
 			    Fact_UN_Population_metrics[EOYear] = LatestYear)
+		displayFolder: Measures
 		lineageTag: b6a5f5e3-b02b-4049-bff7-0c0de0881605
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Title = CONCATENATE("United Nations Latest Population Data & 2050 Projections: ",SELECTEDVALUE(Fact_UN_Population_metrics[Location], "All Countries Selected"))
+		displayFolder: Measures
 		lineageTag: 8cf89d62-2ae5-440a-b98d-27f620233711
 
 	measure LatestDate =
@@ -134,6 +145,7 @@ table Fact_UN_Population_metrics
 			    MAX(Fact_UN_Population_metrics[EOYear]),
 			    REMOVEFILTERS(Fact_UN_Population_metrics[EOYear]))
 		formatString: General Date
+		displayFolder: Measures
 		lineageTag: cca4ef3f-7efb-4872-abaf-db8e3ba3df64
 
 	measure 'PSR (20-64/65+) Projection' =
@@ -156,6 +168,7 @@ table Fact_UN_Population_metrics
 			    Fact_UN_Population_metrics[AgeLabel] = "[20-64/65+]",
 			    Fact_UN_Population_metrics[Sex] = "Both sexes",
 			    Fact_UN_Population_metrics[EOYear] = LatestYear)
+		displayFolder: Measures
 		lineageTag: eb941a83-ffac-4776-8f92-e0ad0ec74a89
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -178,6 +191,7 @@ table Fact_UN_Population_metrics
 			    Fact_UN_Population_metrics[EstimateMethod] = "Projection",
 			    Fact_UN_Population_metrics[Sex] = "Both sexes",
 			    Fact_UN_Population_metrics[EOYear] = LatestYear)
+		displayFolder: Measures
 		lineageTag: f8255bff-2b4d-4b81-a478-7f29a5170723
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -200,6 +214,7 @@ table Fact_UN_Population_metrics
 			    Fact_UN_Population_metrics[EstimateMethod] = "Projection",
 			    Fact_UN_Population_metrics[Sex] = "Both sexes",
 			    Fact_UN_Population_metrics[EOYear] = LatestYear)
+		displayFolder: Measures
 		lineageTag: 06e0e8b8-23ac-4e18-b85e-bb61a00a6f74
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
