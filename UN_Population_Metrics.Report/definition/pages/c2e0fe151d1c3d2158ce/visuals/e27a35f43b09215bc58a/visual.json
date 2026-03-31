@@ -4,10 +4,10 @@
   "position": {
     "x": 11.962616822429908,
     "y": 640,
-    "z": 10001,
+    "z": 10000,
     "height": 79.252336448598143,
     "width": 300.56074766355141,
-    "tabOrder": 10001
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -356,34 +356,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "ea372af2ceead531071d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_UN_Population_Pyramid"
-              }
-            },
-            "Property": "Male Pop %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "30735fab5274c083eb7e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_UN_Population_Pyramid"
-              }
-            },
-            "Property": "Female Pop %"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

@@ -564,7 +564,7 @@
             "displayName": {
               "expr": {
                 "Literal": {
-                  "Value": "'UN Projection >'"
+                  "Value": "'UN Projection > 2023'"
                 }
               }
             },
@@ -852,6 +852,62 @@
             }
           ]
         }
+      },
+      {
+        "name": "9dff0e4f7a2b4f9b1a65",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Date_table"
+              }
+            },
+            "Property": "Year"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c2263bc6d4ace7c0f67b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Date_table"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4fcaf45eddb918f382f8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_metrics"
+              }
+            },
+            "Property": "Potential Support Ratio M/F"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "dd16880b7ad7fd465492",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_metrics"
+              }
+            },
+            "Property": "Location"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

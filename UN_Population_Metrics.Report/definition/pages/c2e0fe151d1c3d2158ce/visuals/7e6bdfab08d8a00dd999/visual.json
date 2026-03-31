@@ -4,10 +4,10 @@
   "position": {
     "x": 1052.7102803738319,
     "y": 26.915887850467293,
-    "z": 5000,
+    "z": 4000,
     "height": 38.8785046728972,
     "width": 192.89719626168227,
-    "tabOrder": 5000
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "PBI_CV_16948668_E17D_454B_8664_2F2C470EA8C1",
@@ -101,7 +101,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "b51e7c466f6023b9d22c",
+        "name": "44f4740edf88e3569265",
         "field": {
           "Column": {
             "Expression": {

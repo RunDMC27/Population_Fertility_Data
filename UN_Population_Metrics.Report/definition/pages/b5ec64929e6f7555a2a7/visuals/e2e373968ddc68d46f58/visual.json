@@ -628,7 +628,7 @@
             "displayName": {
               "expr": {
                 "Literal": {
-                  "Value": "'UN Projection >'"
+                  "Value": "'UN Projection > 2023'"
                 }
               }
             },
@@ -910,6 +910,62 @@
         },
         "type": "Categorical",
         "howCreated": "User"
+      },
+      {
+        "name": "21556829321974986ddc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Date_table"
+              }
+            },
+            "Property": "Year"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3e02aecca99a018107e4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Date_table"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "019921d54f11d50f518e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_metrics"
+              }
+            },
+            "Property": "Fertility Rate M/F"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e53e089edf97c02b562f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_metrics"
+              }
+            },
+            "Property": "Location"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }
