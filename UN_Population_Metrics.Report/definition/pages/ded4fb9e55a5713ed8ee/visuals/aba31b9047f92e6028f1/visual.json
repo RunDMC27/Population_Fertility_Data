@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "4648d2e4906fdc5afab2",
+  "name": "aba31b9047f92e6028f1",
   "position": {
-    "x": 12.673267326732674,
-    "y": 99.8019801980198,
-    "z": 7000,
-    "height": 443.56435643564356,
-    "width": 1235.6435643564357,
-    "tabOrder": 7000
+    "x": 650.82299887260422,
+    "y": 101.01465614430664,
+    "z": 6000,
+    "height": 608.97406989853437,
+    "width": 610.41713641488161,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "lineChart",
@@ -29,21 +29,6 @@
               "queryRef": "Date_table.Year",
               "nativeQueryRef": "Year1",
               "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Date_table"
-                    }
-                  },
-                  "Property": "Date"
-                }
-              },
-              "queryRef": "Date_table.Date",
-              "nativeQueryRef": "Date",
-              "active": false
             }
           ]
         },
@@ -54,13 +39,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_UN_Population_metrics"
+                      "Entity": "FACT_UN_Forest_Man"
                     }
                   },
                   "Property": "Location"
                 }
               },
-              "queryRef": "Fact_UN_Population_metrics.Location",
+              "queryRef": "FACT_UN_Forest_Man.Location",
               "nativeQueryRef": "Location"
             }
           ]
@@ -69,17 +54,22 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_UN_Population_metrics"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FACT_UN_Forest_Man"
+                        }
+                      },
+                      "Property": "Value"
                     }
                   },
-                  "Property": "Population M/F"
+                  "Function": 0
                 }
               },
-              "queryRef": "Fact_UN_Population_metrics.Population M/F",
-              "nativeQueryRef": "Population M/F"
+              "queryRef": "Sum(FACT_UN_Forest_Man.Series.Obs.ObsValue.Attribute:value)",
+              "nativeQueryRef": "Series.Obs.ObsValue.Attribute:value"
             }
           ]
         }
@@ -88,16 +78,21 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "Date_table"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "FACT_UN_Forest_Man"
+                      }
+                    },
+                    "Property": "Value"
                   }
                 },
-                "Property": "Year"
+                "Function": 0
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
@@ -172,6 +167,13 @@
                   }
                 }
               }
+            },
+            "invertAxis": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -209,6 +211,20 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "end": {
+              "expr": {
+                "Literal": {
+                  "Value": "100D"
                 }
               }
             }
@@ -295,17 +311,6 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "properties": {
-            "showMarker": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
           }
         }
       ],
@@ -560,87 +565,253 @@
               }
             ]
           }
-        }
-      ],
-      "xAxisReferenceLine": [
+        },
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'UN Projection > 2023'"
-                }
-              }
-            },
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "2024D"
-                }
-              }
-            },
-            "lineColor": {
+            "fill": {
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#E60A0A'"
                     }
                   }
-                }
-              }
-            },
-            "dataLabelShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "dataLabelHorizontalPosition": {
-              "expr": {
-                "Literal": {
-                  "Value": "'right'"
-                }
-              }
-            },
-            "dataLabelText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Name'"
-                }
-              }
-            },
-            "dataLabelColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "25D"
                 }
               }
             }
           },
           "selector": {
-            "id": "1"
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "FACT_UN_Forest_Man"
+                          }
+                        },
+                        "Property": "LocationID"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'156'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 6,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "FACT_UN_Forest_Man"
+                          }
+                        },
+                        "Property": "LocationID"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'202'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#118DFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "FACT_UN_Forest_Man"
+                          }
+                        },
+                        "Property": "LocationID"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'513'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E60A0A'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "FACT_UN_Forest_Man"
+                          }
+                        },
+                        "Property": "Location"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'China'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#118DFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "FACT_UN_Forest_Man"
+                          }
+                        },
+                        "Property": "Location"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Europe & North America'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 6,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "FACT_UN_Forest_Man"
+                          }
+                        },
+                        "Property": "Location"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Sub-Saharan Africa'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
           }
         }
       ],
@@ -677,26 +848,6 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "labels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "optimizeLabelDisplay": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
                 }
               }
             }
@@ -756,7 +907,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Population Growth Actual and Projection'"
+                  "Value": "'Percetnage of forests with a management plan'"
                 }
               }
             }
@@ -865,7 +1016,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'Total'"
+                          "Value": "'[20-64/65+]'"
                         }
                       }
                     ]

@@ -690,6 +690,13 @@
                   "Value": "25D"
                 }
               }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
             }
           },
           "selector": {
@@ -763,6 +770,20 @@
                       "Percent": 0
                     }
                   }
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
                 }
               }
             }
@@ -912,7 +933,7 @@
         "howCreated": "User"
       },
       {
-        "name": "21556829321974986ddc",
+        "name": "f26e945643d490ad0965",
         "field": {
           "Column": {
             "Expression": {
@@ -926,7 +947,7 @@
         "type": "Advanced"
       },
       {
-        "name": "3e02aecca99a018107e4",
+        "name": "f4c60819eeb20bb68a71",
         "field": {
           "Column": {
             "Expression": {
@@ -940,7 +961,7 @@
         "type": "Categorical"
       },
       {
-        "name": "019921d54f11d50f518e",
+        "name": "7eaa9d4526ca2632dcd8",
         "field": {
           "Measure": {
             "Expression": {
@@ -954,7 +975,7 @@
         "type": "Advanced"
       },
       {
-        "name": "e53e089edf97c02b562f",
+        "name": "44721d4b0e516544750a",
         "field": {
           "Column": {
             "Expression": {

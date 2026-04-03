@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["DIM_UN_Countrydata","DIM_UN_Indicators","DIM_Fact_UN_LifeExpectancy","Fact_UN_Population_metrics","Fact_UN_Population_Indicators","Fact_UN_Population_Pyramid"]
+annotation PBI_QueryOrder = ["DIM_UN_Countrydata","DIM_UN_Indicators","DIM_Fact_UN_LifeExpectancy","Fact_UN_Population_metrics","Fact_UN_Population_Indicators","Fact_UN_Population_Pyramid","FACT_UN_Poverty_data","FACT_UN_Forest_Man","FACT_Clean_WaterAccess"]
 
 annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
 
@@ -19,6 +19,9 @@ ref table DIM_UN_Indicators
 ref table Fact_UN_Population_metrics
 ref table Fact_UN_Population_Indicators
 ref table Fact_UN_Population_Pyramid
+ref table FACT_UN_Forest_Man
+ref table FACT_UN_Poverty_data
+ref table FACT_Clean_WaterAccess
 
 ref cultureInfo en-US
 

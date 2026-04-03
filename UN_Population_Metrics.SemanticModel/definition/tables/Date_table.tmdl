@@ -18,7 +18,7 @@ table Date_table
 		dataType: int64
 		formatString: 0
 		lineageTag: 7cb20c26-1526-406f-b857-111da9987c2b
-		summarizeBy: none
+		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic
 

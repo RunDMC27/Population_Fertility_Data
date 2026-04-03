@@ -13,3 +13,11 @@ relationship 13de4f4d-256f-bcca-1651-365854b75a78
 	fromColumn: Fact_UN_Population_Indicators.IndicatorId
 	toColumn: DIM_UN_Indicators.'data.id'
 
+relationship 24aff41a-5806-31be-3710-adf4146c9ed4
+	fromColumn: FACT_UN_Poverty_data.EOyear
+	toColumn: Date_table.Date
+
+relationship 24a0a9e5-5053-d1b7-89ad-75dbf6bff8e0
+	fromColumn: FACT_UN_Forest_Man.EOYear
+	toColumn: Date_table.Date
+

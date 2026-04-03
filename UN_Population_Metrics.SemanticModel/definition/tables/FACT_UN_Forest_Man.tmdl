@@ -1,0 +1,82 @@
+table FACT_UN_Forest_Man
+	lineageTag: 985de12a-680c-448f-9067-54db723bf081
+
+	column LocationID
+		dataType: string
+		lineageTag: 51d10df2-47a4-45bb-8799-59f0e22cd801
+		summarizeBy: none
+		sourceColumn: LocationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: 56be5a28-da23-413d-b88a-750bac881c71
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: e8b7ad1e-a563-4cd8-9e2e-7b486c696aff
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column EOYear
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1f205081-69a9-4c85-aced-807bb973e919
+		summarizeBy: none
+		sourceColumn: EOYear
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Location
+		dataType: string
+		lineageTag: 09b85a27-2f72-41ea-849f-9600462770de
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FACT_UN_Forest_Man = m
+		mode: import
+		source =
+				let
+				    Source = Xml.Tables(Web.Contents("https://data.un.org/ws/rest/data/IAEG-SDGs,DF_SDG_GLH,1.24/..+AG_LND_FRSTMGT.202+156+356+513.........../ALL/?detail=full&dimensionAtObservation=TIME_PERIOD")),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Name] = "DataSet")),
+				    #"Expanded {0}5" = Table.ExpandTableColumn(#"Filtered Rows", "Table", {"http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/generic"}, {"Table.http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/generic"}),
+				    #"Expanded {0}" = Table.ExpandTableColumn(#"Expanded {0}5", "Table.http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/generic", {"Series"}, {"Series"}),
+				    #"Expanded {0}1" = Table.ExpandTableColumn(#"Expanded {0}", "Series", {"SeriesKey", "Attributes", "Obs"}, {"Series.SeriesKey", "Series.Attributes", "Series.Obs"}),
+				    #"Expanded {0}2" = Table.ExpandTableColumn(#"Expanded {0}1", "Series.SeriesKey", {"Value"}, {"Series.SeriesKey.Value"}),
+				    #"Expanded {0}3" = Table.ExpandTableColumn(#"Expanded {0}2", "Series.SeriesKey.Value", {"Attribute:id", "Attribute:value"}, {"Series.SeriesKey.Value.Attribute:id", "Series.SeriesKey.Value.Attribute:value"}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Expanded {0}3", each ([#"Series.SeriesKey.Value.Attribute:id"] = "REF_AREA" or [#"Series.SeriesKey.Value.Attribute:id"] = "SERIES")),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows1",{"Series.SeriesKey.Value.Attribute:id", "Series.SeriesKey.Value.Attribute:value", "Series.Obs"}),
+				    #"Filtered Rows2" = Table.SelectRows(#"Removed Other Columns", each ([#"Series.SeriesKey.Value.Attribute:id"] = "REF_AREA")),
+				    #"Expanded {0}4" = Table.ExpandTableColumn(#"Filtered Rows2", "Series.Obs", {"ObsDimension", "ObsValue", "Attributes"}, {"Series.Obs.ObsDimension", "Series.Obs.ObsValue", "Series.Obs.Attributes"}),
+				    #"Expanded {0}6" = Table.ExpandTableColumn(#"Expanded {0}4", "Series.Obs.ObsDimension", {"Attribute:id", "Attribute:value"}, {"Series.Obs.ObsDimension.Attribute:id", "Series.Obs.ObsDimension.Attribute:value"}),
+				    #"Expanded {0}7" = Table.ExpandTableColumn(#"Expanded {0}6", "Series.Obs.ObsValue", {"Attribute:value"}, {"Series.Obs.ObsValue.Attribute:value"}),
+				    #"Expanded {0}8" = Table.ExpandTableColumn(#"Expanded {0}7", "Series.Obs.Attributes", {"Value"}, {"Series.Obs.Attributes.Value"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Expanded {0}8",{"Series.SeriesKey.Value.Attribute:value", "Series.Obs.ObsDimension.Attribute:value", "Series.Obs.ObsValue.Attribute:value"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Other Columns1",{{"Series.Obs.ObsValue.Attribute:value", Int64.Type}}),
+				    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"Series.SeriesKey.Value.Attribute:value", Order.Ascending}, {"Series.Obs.ObsDimension.Attribute:value", Order.Ascending}}),
+				    #"Added Custom" = Table.AddColumn(#"Sorted Rows", "Custom", each Date.FromText([#"Series.Obs.ObsDimension.Attribute:value"])),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "EOYear", each Date.EndOfYear([Custom])),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"EOYear", type date}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type1",{"Custom"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Series.SeriesKey.Value.Attribute:value", "LocationID"}, {"Series.Obs.ObsDimension.Attribute:value", "Year"}, {"Series.Obs.ObsValue.Attribute:value", "Value"}}),
+				    #"Filtered Rows3" = Table.SelectRows(#"Renamed Columns", each ([LocationID] <> "356")),
+				    Custom1 = Table.AddColumn(#"Filtered Rows3", "Location", each if [LocationID] = "156" then "China" else if [LocationID] = "202" then "Sub-Saharan Africa" else if [LocationID] = "513" then "Europe & North America" else null)
+				in
+				    Custom1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

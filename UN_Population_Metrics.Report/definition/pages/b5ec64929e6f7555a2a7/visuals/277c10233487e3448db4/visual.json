@@ -626,6 +626,13 @@
                   "Value": "25D"
                 }
               }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
             }
           },
           "selector": {
@@ -854,7 +861,7 @@
         }
       },
       {
-        "name": "9dff0e4f7a2b4f9b1a65",
+        "name": "8c0953ec09cfd17576a2",
         "field": {
           "Column": {
             "Expression": {
@@ -868,7 +875,7 @@
         "type": "Advanced"
       },
       {
-        "name": "c2263bc6d4ace7c0f67b",
+        "name": "a855be32195890e21b40",
         "field": {
           "Column": {
             "Expression": {
@@ -882,7 +889,7 @@
         "type": "Categorical"
       },
       {
-        "name": "4fcaf45eddb918f382f8",
+        "name": "98630a83008f490e9702",
         "field": {
           "Measure": {
             "Expression": {
@@ -896,7 +903,7 @@
         "type": "Advanced"
       },
       {
-        "name": "dd16880b7ad7fd465492",
+        "name": "1f0f2427293ec398782c",
         "field": {
           "Column": {
             "Expression": {
