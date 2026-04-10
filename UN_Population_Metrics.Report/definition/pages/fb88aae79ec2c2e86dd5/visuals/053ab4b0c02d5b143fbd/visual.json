@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "053ab4b0c02d5b143fbd",
   "position": {
-    "x": 1067.2207792207791,
-    "y": 19.948051948051948,
+    "x": 1066.6666666666667,
+    "y": 20.562248995983936,
     "z": 5000,
-    "height": 53.1948051948052,
-    "width": 192.83116883116884,
+    "height": 60.401606425702816,
+    "width": 192.77108433734941,
     "tabOrder": 7000
   },
   "visual": {
@@ -182,6 +182,25 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "2e53fde0fd20c712c303",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_UN_Population_metrics"
+                  }
+                },
+                "Property": "Date Format"
+              }
+            },
+            "Function": 4
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

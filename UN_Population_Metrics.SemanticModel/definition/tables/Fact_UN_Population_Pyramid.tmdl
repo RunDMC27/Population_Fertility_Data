@@ -136,7 +136,7 @@ table Fact_UN_Population_Pyramid
 		source =
 				let
 				    Url =
-				        "https://population.un.org/dataportalapi/api/v1/data/indicators/46/locations/156,356,947,1829/start/1970/end/2050" &
+				        "https://population.un.org/dataportalapi/api/v1/data/indicators/46/locations/156,356,947,1829/start/1970/end/2100" &
 				        "?format=csv",
 				
 				    Source =
@@ -147,7 +147,7 @@ table Fact_UN_Population_Pyramid
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"LocationId", Int64.Type}, {"Location", type text}, {"Iso3", type text}, {"Iso2", type text}, {"LocationTypeId", Int64.Type}, {"IndicatorId", Int64.Type}, {"Indicator", type text}, {"IndicatorDisplayName", type text}, {"SourceId", Int64.Type}, {"Source", type text}, {"Revision", Int64.Type}, {"VariantId", Int64.Type}, {"Variant", type text}, {"VariantShortName", type text}, {"VariantLabel", type text}, {"TimeId", Int64.Type}, {"TimeLabel", Int64.Type}, {"TimeMid", type number}, {"CategoryId", Int64.Type}, {"Category", type text}, {"EstimateTypeId", Int64.Type}, {"EstimateType", type text}, {"EstimateMethodId", Int64.Type}, {"EstimateMethod", type text}, {"SexId", Int64.Type}, {"Sex", type text}, {"AgeId", Int64.Type}, {"AgeLabel", type text}, {"AgeStart", Int64.Type}, {"AgeEnd", Int64.Type}, {"AgeMid", Int64.Type}, {"Value", type number}}),
 				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type1",{"LocationId", "Location", "Indicator", "VariantLabel", "TimeLabel", "EstimateMethod", "Sex", "AgeLabel", "Value"}),
-				    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each ([Sex] <> "Both sexes") and ([VariantLabel] = "Median") and ([TimeLabel] = 1970 or [TimeLabel] = 1990 or [TimeLabel] = 2010 or [TimeLabel] = 2030 or [TimeLabel] = 2050)),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each ([Sex] <> "Both sexes") and ([VariantLabel] = "Median") and ([TimeLabel] = 1970 or [TimeLabel] = 1990 or [TimeLabel] = 2010 or [TimeLabel] = 2030 or [TimeLabel] = 2050 or [TimeLabel] = 2100)),
 				    #"Inserted Text Before Delimiter" = Table.AddColumn(#"Filtered Rows", "Text Before Delimiter", each Text.BeforeDelimiter([AgeLabel], "-"), type text),
 				    #"Replaced Value" = Table.ReplaceValue(#"Inserted Text Before Delimiter","+","",Replacer.ReplaceText,{"Text Before Delimiter"}),
 				    #"Changed Type2" = Table.TransformColumnTypes(#"Replaced Value",{{"Text Before Delimiter", Int64.Type}}),

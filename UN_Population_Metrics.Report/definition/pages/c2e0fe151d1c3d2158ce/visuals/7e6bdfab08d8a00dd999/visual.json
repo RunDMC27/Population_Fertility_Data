@@ -97,5 +97,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "50bb5c8a9e7955ab8412",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_Pyramid"
+              }
+            },
+            "Property": "TimeLabel"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -136,7 +136,7 @@ table Fact_UN_Population_metrics
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure Title = CONCATENATE("United Nations Latest Population Data & 2050 Projections: ",SELECTEDVALUE(Fact_UN_Population_metrics[Location], "All Countries Selected"))
+	measure Title = CONCATENATE("United Nations Latest Population Data & Projections: ",SELECTEDVALUE(Fact_UN_Population_metrics[Location], "All Countries Selected"))
 		displayFolder: Measures
 		lineageTag: 8cf89d62-2ae5-440a-b98d-27f620233711
 
@@ -330,7 +330,7 @@ table Fact_UN_Population_metrics
 		source =
 				let
 				    Url =
-				        "https://population.un.org/dataportalapi/api/v1/data/indicators/49,19,70,85/locations/156,356,947,1829/start/1970/end/2050" &
+				        "https://population.un.org/dataportalapi/api/v1/data/indicators/49,19,70,85/locations/156,356,947,1829/start/1970/end/2100" &
 				        "?format=csv",
 				
 				    Source =

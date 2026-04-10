@@ -94,5 +94,23 @@
         }
       ]
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "79f523c3549149ff55c3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_metrics"
+              }
+            },
+            "Property": "Title"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

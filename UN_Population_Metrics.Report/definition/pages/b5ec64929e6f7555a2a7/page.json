@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "b5ec64929e6f7555a2a7",
-  "displayName": "Fertility & PSR",
+  "displayName": "Pop_ Fertility & PSR",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,

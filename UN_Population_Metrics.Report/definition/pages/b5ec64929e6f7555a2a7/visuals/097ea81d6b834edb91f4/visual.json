@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "4648d2e4906fdc5afab2",
+  "name": "097ea81d6b834edb91f4",
   "position": {
-    "x": 12.673267326732674,
-    "y": 99.8019801980198,
-    "z": 7000,
-    "height": 443.56435643564356,
-    "width": 1235.6435643564357,
-    "tabOrder": 7000
+    "x": 12.85140562248996,
+    "y": 100.2409638554217,
+    "z": 10001,
+    "height": 308.43373493975906,
+    "width": 1256.8674698795182,
+    "tabOrder": 14003
   },
   "visual": {
     "visualType": "lineChart",
@@ -883,6 +883,62 @@
             }
           ]
         }
+      },
+      {
+        "name": "d46deb7fc42b7c19e006",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Date_table"
+              }
+            },
+            "Property": "Year"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a421e4260071c2d7678e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Date_table"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b20b644034f88f93773f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_metrics"
+              }
+            },
+            "Property": "Location"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "273987f87a9b4e3115ac",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_UN_Population_metrics"
+              }
+            },
+            "Property": "Population M/F"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }
